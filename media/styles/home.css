@@ -1,0 +1,23 @@
+#content-header-image {
+    height: 400px;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: calc(50% - 400px) 800px calc(50% - 400px);
+}
+#content-header-image-left, #content-header-image-right {
+    background-image: url('../images/wall2.svg');
+    background-repeat: repeat-x;
+    background-size: 800px auto;
+}
+#content-header-image-left {
+    background-position: top right;
+}
+#content-header-image-right {
+    background-position: top left;
+}
+
+#content-header-image-center {
+    background-image: url('../images/wall.svg');
+    background-repeat: no-repeat;
+    background-size: 800px auto;
+}

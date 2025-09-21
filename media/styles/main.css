@@ -1,0 +1,102 @@
+#header-content {
+    width: 100%;
+    margin: 0;
+    background-image:
+        url('../images/wallpaper.png');
+    background-position: center;
+    background-size: cover;
+    background-position-y: bottom;
+    height: calc(60vh - 50px);
+}
+#header-bar {
+    width: 100%;
+    height: 50px;
+    background-color: #001830;
+    position: sticky;
+    top: 0;
+    display: inline-block;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+#content {
+    min-height: 100vh;
+}
+body {
+    margin: 0;
+    min-width: 600px;
+}
+#header-content-img {
+    color: #ffffff;
+    font-size: 30px;
+    width: 100%;
+    height: 100px;
+    font-family: 'Courier New';
+    font-weight: bold;
+    content: '12Kittens';
+    
+    text-align: center;
+}
+#header-content-img-container {
+    width: 300px;
+
+    margin: auto;
+}
+.bar-element-wrapper {
+    display: inline-grid;
+    height: calc(100% - 5px);
+    margin-top: 5px;
+    grid-template-rows: calc(100% - 5px) 5px;
+}
+.bar-element {
+    display: block;
+    margin: 0 10px;
+    height: 100%;
+    align-content: center;
+}
+.bar-list {
+    width: 200px;
+}
+#header-bar-menu-left {
+    direction: rtl;
+    margin-left: auto;
+}
+#header-bar-menu-right {
+    direction: ltr;
+}
+.bar-element-anchor {
+    color: #ffffff;
+    font-family: consolas, monospace;
+    text-decoration: none;
+    font-size: 22px;
+}
+.bar-element-wrapper.selected .bar-element a.bar-element-anchor {
+    color: #ff6060;
+}
+.bar-element-wrapper.selected .bar-element-selector {
+    background-color: #ff6060;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+a.bar-element-anchor:hover {
+    color: #c0c0c0;
+}
+#text-wrapper {
+    width: 100%;
+    margin: auto;
+    max-width: 800px;
+    padding: 30px;
+}
+#text-wrapper h1 {
+    font-family: ubuntu, calibri, sans-serif;
+    font-size: 30pt;
+    border-left: 2px;
+    border-color: #000000;
+}
+#text-wrapper p {
+    font-family: helvetica, calibri, sans-serif;
+    font-weight: lighter;
+    font-size: 14pt;
+}
