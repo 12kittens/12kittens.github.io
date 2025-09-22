@@ -4,18 +4,20 @@
 <head>
     <meta charset="utf-8" />
     <title>army</title>
-    <link href="styles/basic.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
 </head>
 
 <body>
-    <canvas id="canvas" height="720px" width="960px">
-        <h1>
-            Error
-        </h1>
-        <p>
-            Your browser doesn't support HTML5 canvas.
-        </p>
-    </canvas>
+    <div id="canvas-container">
+        <canvas id="canvas" height="720px" width="960px">
+            <h1>
+                Error
+            </h1>
+            <p>
+                Your browser doesn't support HTML5 canvas.
+            </p>
+        </canvas>
+    </div>
     <script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');

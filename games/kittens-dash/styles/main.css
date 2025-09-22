@@ -1,0 +1,24 @@
+body {
+    overflow: hidden;
+    margin: 0;
+	background-image: repeating-linear-gradient( 30deg, #ff7000, #bf8020 200px, #a06030 400px )
+}
+#canvas-container {
+    margin: auto;
+    width: calc(100% - 10px);
+    max-width: calc( calc( 100dvh - 10px ) * 4 / 3 );
+    height: 100dvh;
+}
+#canvas {
+    width: 100%;
+    max-height: calc( 100svw * 3 / 4 );
+    margin-top: max( calc( calc( 100dvh - 100dvw * 3 / 4 ) / 2 ) + 2.5px, 5px );
+	border-radius: 8px;
+    background-color: #a08060
+}
+h1 {
+    font-size: 33pt;
+}
+p {
+    font-size: 18pt;
+}
