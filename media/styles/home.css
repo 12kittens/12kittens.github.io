@@ -21,3 +21,52 @@
     background-repeat: no-repeat;
     background-size: 800px auto;
 }
+#projects-grid {
+    width: round(down, 100%, 200px);
+    max-width: 600px;
+    margin: auto;
+    font-size: 0;
+}
+.grid-item {
+    display: inline-flex;
+    height: 140px;
+    width: 186px;
+    margin: 5px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    font-size: 20px;
+    inline-size: 186px;
+    grid-template-columns: 80% 20%;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+}
+.grid-item .holder {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 80% 20%;
+}
+.grid-item .holder img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #c0c0c0;
+}
+
+.grid-item .holder div {
+    text-align: center; 
+    border-radius: 6px;
+    font-family: var(--title);
+    font-size: 14pt;
+    color: #ffffff;
+    padding-top: 5px;
+    text-decoration: none;
+}
+.grid-item.orange {background-color: #ff7000; border-color: #ff7000}
+.grid-item.purple {background-color: #bf00ff; border-color: #bf00ff}
+.grid-item.blue   {background-color: #0030ff; border-color: #0030ff}
+.grid-item.green  {background-color: #00a000; border-color: #00a000}
+.grid-item.red    {background-color: #a00000; border-color: #a00000}
+.grid-item.yellow {background-color: #c0c000; border-color: #c0c000}

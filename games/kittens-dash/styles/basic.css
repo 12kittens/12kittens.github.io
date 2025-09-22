@@ -1,0 +1,10 @@
+:root {
+    --height: 100%;
+}
+#canvas {
+    background-color: #808080;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}

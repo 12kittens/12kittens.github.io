@@ -1,8 +1,14 @@
+:root {
+    --title: ubuntu, calibri, sans-serif;
+    --font: helvetica, calibri, sans-serif;
+
+}
 #header-content {
     width: 100%;
     margin: 0;
     background-image:
         url('../images/wallpaper.png');
+    image-rendering: optimizeSpeed;
     background-position: center;
     background-size: cover;
     background-position-y: bottom;
@@ -84,19 +90,33 @@ a.bar-element-anchor:hover {
     color: #c0c0c0;
 }
 #text-wrapper {
-    width: 100%;
+    width: calc(100% - 30px);
     margin: auto;
     max-width: 800px;
-    padding: 30px;
+    padding: 30px 15px;
+}
+#text-wrapper hr {
+    border-style: solid;
+    border-color: #a0a0a0;
 }
 #text-wrapper h1 {
-    font-family: ubuntu, calibri, sans-serif;
+    font-family: var(--title);
     font-size: 30pt;
     border-left: 2px;
     border-color: #000000;
 }
+#text-wrapper h2 {
+    font-family: var(--title);
+    font-size: 22pt;
+    letter-spacing: -1px;
+    border-left: 2px;
+    border-color: #000000;
+}
 #text-wrapper p {
-    font-family: helvetica, calibri, sans-serif;
-    font-weight: lighter;
+    font-family: var(--font);
+    font-weight: normal;
+    color: #202020;
     font-size: 14pt;
+    line-height: 24pt;
+    text-align: justify;
 }
