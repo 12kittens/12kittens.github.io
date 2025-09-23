@@ -1,8 +1,8 @@
 
-let mouseX = 0, mouseY = 0, down = [];
+let mouseX = 0, mouseY = 0, down = [], pause;
 let images, playingNow, volume = 1;
 const characterCostumes = [
-    0, 5
+    5, 9, 0, 10, 11
 ]
 
 if (!localStorage.getItem('character')) {
@@ -18,10 +18,30 @@ document.addEventListener('mousemove', function (e) {
 
 document.addEventListener('mousedown', function (e) {
     down[e.button] = true;
-})
+}, false)
 document.addEventListener('mouseup', function (e) {
     down[e.button] = false;
-})
+}, false)
+
+document.addEventListener('keydown', function (e) {
+    if (playingNow) {
+        if (e.keyCode == 32) {
+            down[0] = true;
+        } else if (e.keyCode == 13) {
+            down[2] = true;
+        }
+    }
+}, false)
+
+document.addEventListener('keyup', function (e) {
+        if (playingNow) {
+        if (e.keyCode == 32) {
+            down[0] = false;
+        } else if (e.keyCode == 13) {
+            down[2] = false;
+        }
+    }
+}, false)
 
 document.addEventListener('touchmove', function (e) {
     mouseX = (e.targetTouches[0].clientX - canvas.offsetLeft) / canvas.clientWidth * 960;
@@ -29,25 +49,22 @@ document.addEventListener('touchmove', function (e) {
 }, false)
 
 document.addEventListener('touchstart', function (e) {
-    if(playingNow) {
-        if(e.targetTouches[0].clientY > 660) {
+        mouseX = (e.targetTouches[0].clientX - canvas.offsetLeft) / canvas.clientWidth * 960;
+        mouseY = (e.targetTouches[0].clientY - canvas.offsetTop) / canvas.clientHeight * 720;
+        if(mouseY > 660 && playingNow) {
             down[2] = true;
         } else {
             down[0] = true;
         }
-    } else {
-        down[0] = true;
-    }
-    mouseX = (e.targetTouches[0].clientX - canvas.offsetLeft) / canvas.clientWidth * 960;
-    mouseY = (e.targetTouches[0].clientY - canvas.offsetTop) / canvas.clientHeight * 720;
-})
+}, false)
+
 document.addEventListener('touchend', function (e) {
     down = [false, false, false, false]
-})
+}, false)
 
 document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
-})
+}, false)
 
 loadImages([
     'https://12kittens.github.io/games/kittens-dash/images/character.svg',
@@ -59,9 +76,13 @@ loadImages([
     'https://12kittens.github.io/games/kittens-dash/images/audio.svg',
     'https://12kittens.github.io/games/kittens-dash/images/notaudio.svg',
     'https://12kittens.github.io/games/kittens-dash/images/background.svg',
+    'https://12kittens.github.io/games/kittens-dash/images/character3.svg',
+    'https://12kittens.github.io/games/kittens-dash/images/character4.svg',
+    'https://12kittens.github.io/games/kittens-dash/images/character5.svg',
+    'https://12kittens.github.io/games/kittens-dash/images/pause.svg',
 ], function (imglist) {
     images = imglist;
-    loadAudio('https://12kittens.github.io/games/kittens-dash/main.mp3',
+    loadAudio('https://12kittens.github.io/games/kittens-dash/audio/main.mp3',
         function (audio) {
             playAudio(audio);
             ctx.clearRect(0, 0, 960, 720);
@@ -76,6 +97,7 @@ function background() {
 
 function drawMainMenu() {
     let cursor = 'inherit';
+    let message = '';
     if (!playingNow) {
         background();
         ctx.font = '44px helvetica';
@@ -89,6 +111,7 @@ function drawMainMenu() {
         ctx.drawImage(images[3], 450, 330, 60, 60);
         if (mouseX > 430 && mouseX < 530 && mouseY > 310 && mouseY < 410) {
             cursor = 'pointer';
+            message = 'Play';
             if (down[0] && !playingNow) {
                 startPlaying();
             }
@@ -97,6 +120,7 @@ function drawMainMenu() {
         ctx.drawImage(images[4], 576, 336, 48, 48);
         if (mouseX > 560 && mouseX < 640 && mouseY > 320 && mouseY < 400) {
             cursor = 'pointer';
+            message = 'Reset highscore';
             if (down[0] && !playingNow) {
                 localStorage.removeItem('hs');
             }
@@ -114,6 +138,7 @@ function drawMainMenu() {
 
         if (mouseX > 320 && mouseX < 400 && mouseY > 320 && mouseY < 400) {
             cursor = 'pointer';
+            message = 'Audio on/off';
             if (down[0] && !playingNow) {
                 if (volume) {
                     volume = 0;
@@ -126,6 +151,7 @@ function drawMainMenu() {
         drawCharacter(images[characterCostumes[localStorage.getItem('character')]], { avoid: 330, y: 275 });
         if (mouseX > 330 && mouseX < 375 && mouseY > 275 && mouseY < 320) {
             cursor = 'pointer';
+            message = 'Change character';
             if (down[0] && !playingNow) {
                 console.log(localStorage.getItem('character'))
                 localStorage.setItem('character', localStorage.getItem('character') * 1 + 1)
@@ -136,11 +162,13 @@ function drawMainMenu() {
         down[0] = false;
     }
     canvas.style.cursor = cursor;
+    ctx.font = '20px helvetica';
+    ctx.fillText(message, 20, 700);
     requestAnimationFrame(drawMainMenu);
 }
 
 async function playAudio(audio) {
-    // thanks to @thenanercat
+    // thanks to @thenanercat, don't forget it!!
     audio.volume = volume;
     const p = audio.play();
     p.catch(function () {
@@ -151,10 +179,14 @@ async function playAudio(audio) {
     });
     await p;
     setTimeout(function () {
-        if (audio.currentTime > 34.9) {
-            audio.currentTime = 7.56;
+        if (audio.currentTime >= 129.488936) {
+            setTimeout(function() {
+                audio.currentTime = 0;
+                playAudio(audio);
+            }, 3000)
+        } else {
+            playAudio(audio);
         }
-        playAudio(audio)
     }, 100)
 }
 
@@ -206,75 +238,79 @@ function startPlaying() {
     drawAll(images);
 
     function repeat() {
-        if (!playingNow) {
-            return;
-        }
-        cycle--;
-        if (cycle == 0) {
-            let c;
-            if(Math.random() > 0.2) {
-                if (Math.random() < 0.5) {
-                    c = {
-                        active: false,
-                        type: 'bounce',
-                        dir: 'left',
-                        x: -60,
-                        y: 20,
-                        str: 0,
-                        speed: 5 + Math.random() * 3,
-                    };
+        if(!pause) {
+            cycle--;
+            if (cycle == 0) {
+                let c;
+                if(Math.random() > 0.2) {
+                    if (Math.random() < 0.5) {
+                        c = {
+                            active: false,
+                            type: 'bounce',
+                            dir: 'left',
+                            x: -60,
+                            y: 20,
+                            str: 0,
+                            speed: 5 + Math.random() * 3,
+                        };
+                    } else {
+                        c = {
+                            active: false,
+                            type: 'basic',
+                            dir: 'left',
+                            x: -60,
+                            speed: 5 + Math.random() * 3,
+                        };
+                    }
+        
+                    if (Math.random() > 0.5) {
+                        c.dir = 'right';
+                        c.x = 960;
+                    }
+        
+                    balls.push(c);
+                    cycle = Math.round(Math.random() * 100 + 200);
+                    setTimeout(function () {
+                        balls[balls.indexOf(c)].active = true;
+                    }, 1000)
                 } else {
-                    c = {
-                        active: false,
-                        type: 'basic',
-                        dir: 'left',
-                        x: -60,
-                        speed: 5 + Math.random() * 3,
-                    };
-                }
-    
-                if (Math.random() > 0.5) {
-                    c.dir = 'right';
-                    c.x = 960;
-                }
-    
-                balls.push(c);
-                cycle = Math.round(Math.random() * 100 + 200);
-                setTimeout(function () {
-                    balls[balls.indexOf(c)].active = true;
-                }, 1000)
-            } else {
-                const num = Math.floor(Math.random() * 11.9999999999999999)
-                ground[num] = 'alert';
-                setTimeout(function() {
-                    ground[num] = 1;  
+                    const num = Math.floor(Math.random() * 11.9999999999999999)
+                    ground[num] = 'alert';
                     setTimeout(function() {
-                        ground[num] = 0;
-                    }, 1500)
-                }, 1000)
-                cycle = Math.round(Math.random() * 50 + 120);
+                        ground[num] = 1;  
+                        setTimeout(function() {
+                            ground[num] = 0;
+                        }, 1500)
+                    }, 1000)
+                    cycle = Math.round(Math.random() * 50 + 120);
+                } 
             }
-
-        }
-        let shake = 0;
-        for (m = 0; m < balls.length; m++) {
-            const s = controlBall(m);
-            if (s) {
-                shake += s;
+    
+            if (!playingNow) {
+                return;
             }
-        }
-        shakeEffect.str = shake;
-        for (n = 0; n < 12; n++) {
-            controlCharacter(n);
+            
+                let shake = 0;
+            for (m = 0; m < balls.length; m++) {
+                const s = controlBall(m);
+                if (s) {
+                    shake += s;
+                }
+            }
+            shakeEffect.str = shake;
+            for (n = 0; n < 12; n++) {
+                controlCharacter(n);
+            }
         }
         if (alive < 4) {
             armyDeadFunction();
             return;
         } else {
-            score += alive / 250;
+            if(!pause) {
+                score += alive / 250;
+            }
             setTimeout(repeat, 20);
         }
-
     }
 
     function controlBall(n) {
@@ -375,7 +411,7 @@ function startPlaying() {
         return false;
     }
 
-    function drawAll(images) {
+    async function drawAll(images) {
         if (!playingNow || alive < 4) {
             return;
         }
@@ -440,6 +476,42 @@ function startPlaying() {
 
         ctx.font = '32px helvetica';
         ctx.fillText(Math.trunc(score), 950 - ctx.measureText(Math.trunc(score)).width, 40);
+        ctx.drawImage(images[12], 10, 10, 30, 30);
+        if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
+            ctx.globalAlpha = 0.4;
+            ctx.fillRect(0, 0, 960, 720);
+            ctx.globalAlpha = 1;
+            ctx.font = '44px helvetica';
+            ctx.fillText('Pause', 480 - ctx.measureText('Pause').width / 2, 150);
+            ctx.font = '30px helvetica';
+            ctx.fillText('/ Return to the main menu /', 480 - ctx.measureText('/ Return to the main menu /').width / 2, 220);
+            pause = true;
+            down[0] = false;
+            const c = new OffscreenCanvas(960, 720);
+            c.getContext('2d').drawImage(canvas, 0, 0);
+            const p = new Promise(function(e) {
+                function r() {
+                    ctx.drawImage(c, 0, 0);
+                    if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
+                        pause = false;
+                        e();
+                        return;
+                    }
+                    if(mouseX > 300 && mouseX < 660 && mouseY > 190 && mouseY < 250 && down[0]) {
+                        pause = false;
+                        playingNow = false;
+                        e();
+                        return;
+                    }
+                    down[0] = false;
+                    requestAnimationFrame(r);
+                }
+                r();
+            })
+            await p;
+            pause = false;
+            down[0] = false;
+         }
 
         requestAnimationFrame(function () {
             drawAll(images);
@@ -528,9 +600,3 @@ function drawCharacter(image, character) {
         }
     }
 }
-
-
-
-
-
-
