@@ -24,3 +24,41 @@ h1 {
 p {
     font-size: 18pt;
 }
+#bar {
+    position: absolute;
+    height: 30px;
+    width: 90px;
+    left: calc(50vw - 45px);
+    background-color: #ffffff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+}
+#bar button {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+body:fullscreen #bar {
+    height: 8px;
+    bottom: 0;
+    border-radius: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+body:fullscreen #bar:hover {
+    height: 30px;
+}
+body:not(:fullscreen) #bar *:nth-child(1) {
+    background-image: url('https://12kittens.github.io/media/images/fullscreen.svg');
+}
+body #bar *:nth-child(2) {
+    background-image: url('https://12kittens.github.io/media/images/home.svg');
+}
+body #bar *:nth-child(3) {
+    background-image: url('https://12kittens.github.io/media/images/nglogo.svg');
+}
+body:fullscreen #bar *:nth-child(1) {
+    background-image: url('https://12kittens.github.io/media/images/exit-fullscreen.svg');
+}
