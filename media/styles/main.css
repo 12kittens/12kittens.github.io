@@ -112,6 +112,12 @@ a.bar-element-anchor:hover {
     border-left: 2px;
     border-color: #000000;
 }
+#text-wrapper h3, h4, h5, h6 {
+    font-family: var(--title);
+    letter-spacing: -1px;
+    border-left: 2px;
+    border-color: #000000;
+}
 #text-wrapper p {
     font-family: var(--font);
     font-weight: normal;
@@ -119,4 +125,29 @@ a.bar-element-anchor:hover {
     font-size: 14pt;
     line-height: 24pt;
     text-align: justify;
+}
+#text-wrapper a {
+    text-decoration: none;
+    color: #305070;
+}
+#text-wrapper a:hover {
+    color: #307070;
+}
+#text-wrapper li {
+    font-family: var(--font);
+    font-weight: normal;
+    color: #202020;
+    font-size: 14pt;
+    text-align: justify;
+    line-height: 24pt;
+}
+#text-wrapper img {
+    width: 100%;
+    border-radius: 8px;
+}
+#text-wrapper img.small {
+    display: inline;
+    border-radius: 0;
+    height: 70px;
+    width: auto;
 }

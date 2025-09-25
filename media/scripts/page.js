@@ -13,7 +13,7 @@ async function setupPage({
         </div>
         <div class="bar-element-wrapper">
             <div class="bar-element">
-                <a href="" class="bar-element-anchor">Empty</a>
+                <a href="/labs/" class="bar-element-anchor">Labs</a>
             </div>
             <div class="bar-element-selector"></div>
 
@@ -22,14 +22,14 @@ async function setupPage({
     <div id="header-bar-menu-right" class="bar-list">
         <div class="bar-element-wrapper">
             <div class="bar-element">
-                <a href="" class="bar-element-anchor">Empty</a>
+                <a href="/gallery/" class="bar-element-anchor">Gallery</a>
             </div>
             <div class="bar-element-selector"></div>
 
         </div>        
         <div class="bar-element-wrapper">
             <div class="bar-element">
-                <a href="" class="bar-element-anchor">Empty</a>
+                <a href="/games/" class="bar-element-anchor">Games</a>
             </div>
             <div class="bar-element-selector"></div>
         </div>

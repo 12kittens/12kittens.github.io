@@ -50,6 +50,14 @@ body:fullscreen #bar {
 body:fullscreen #bar:hover {
     height: 30px;
 }
+body #bar * {
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+body:fullscreen #bar:not(:hover) * {
+    background: none!important;
+}
 body:not(:fullscreen) #bar *:nth-child(1) {
     background-image: url('https://12kittens.github.io/media/images/fullscreen.svg');
 }

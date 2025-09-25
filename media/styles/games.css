@@ -1,0 +1,37 @@
+#text-wrapper h1 {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 35pt;
+}
+.game-wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.game {
+    display: grid;
+    height: 160px;
+    grid-template-rows: 120px 40px;
+    grid-template-columns: calc(100% - 4px);
+    margin: 20px;
+    border-radius: 8px;
+    background-color: #ff8000;
+}
+.game img {
+    object-fit: cover;
+    object-position: bottom;
+    height: 116px;
+    border-color: #ff8000;
+    border-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+}
+.game a {
+    font-family: var(--title);
+    font-size: 16pt;
+    text-align: center;
+    padding: 5px;
+    color: #ffffff!important;
+}
+.game a:hover {
+    color: #e0e0e0!important;
+}

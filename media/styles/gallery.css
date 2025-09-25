@@ -1,0 +1,18 @@
+#text-wrapper h1 {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 35pt;
+}
+.cc {
+    margin: 30px;
+    background-color: #e0e0d0;
+    border-radius: 18px;
+    padding: 8px 30px;
+}
+.cc p {
+    text-align: center!important;
+}
+.cc p img {
+    height: 30px;
+    width: 30px!important;
+}
