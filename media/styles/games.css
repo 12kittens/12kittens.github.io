@@ -33,5 +33,6 @@
     color: #ffffff!important;
 }
 .game a:hover {
-    color: #e0e0e0!important;
+    text-decoration: underline!important;
+    text-decoration-thickness: 3px;
 }

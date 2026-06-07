@@ -1,0 +1,31 @@
+#text-wrapper h1 {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 35pt;
+}
+.hljs {
+    font-size: 12pt;
+    font-family: 'ubuntu mono', 'consolas', ui-monospace;
+    line-height: 22px;
+    background-color: #e0e0e0;
+}
+.hljs-variable {
+    font-weight: normal;
+    color: #008080;
+}
+.hljs-title {
+    font-weight: normal;
+    color: #809000;
+}
+.hljs-keyword {
+    font-weight: normal;
+    color: #700090;
+}
+.hljs-string {
+    font-weight: normal;
+    color: #704000;
+}
+.hljs-number {
+    font-weight: normal;
+    color: #209020;
+}

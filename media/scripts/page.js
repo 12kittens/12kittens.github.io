@@ -7,7 +7,7 @@ async function setupPage({
     <div id="header-bar-menu-left" class="bar-list">
         <div class="bar-element-wrapper">
             <div class="bar-element">
-                <a href="/home/" class="bar-element-anchor">Home</a>
+                <a href="/" class="bar-element-anchor">Home</a>
             </div>
             <div class="bar-element-selector"></div>
         </div>
