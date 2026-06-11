@@ -1,153 +1,187 @@
+/*
+MARK: Compatibility mode
+*/
+* {
+    box-sizing: border-box;
+}
+h1, h2 {
+    font-family: ubuntu, calibri, sans-serif;
+    line-height: 35pt;
+}
+h1 {
+    font-size: 30pt;
+}
+h2 {
+    font-size: 20pt;
+}
+p, ul {
+    font-family: helvetica, calibri, sans-serif;
+    line-height: 20pt;
+    font-size: 13pt;
+    color: #303030;
+}
+#root {
+    margin: auto;
+    padding-bottom: 400px;
+    width: 100%;
+    max-width: 1000px;
+}
+#compatibility-warning {
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+    border-style: solid;
+    border-width: 5px 0;
+    border-color: #3060a0;
+    background-color: #a0c0ff;
+    padding: 0 15px;
+}
+.nocompat-only {
+    display: none!important;
+}
+
+body {
+    margin: 15px;
+}
+
+/*
+MARK: Main styles
+*/
 :root {
-    --title: ubuntu, calibri, sans-serif;
-    --font: helvetica, calibri, sans-serif;
+    --title-font: ubuntu, calibri, sans-serif;
+    --body-font: helvetica, calibri, sans-serif;
 
 }
-#header-content {
+.no-margin {
+    margin: 0;
+}
+.header-wrapper {
+    height: 60vh;
+}
+.header-img {
+    background-image: url(../images/wallpaper3-narrow.svg);
+    height: 100%;
+    background-position: bottom left;
     width: 100%;
     margin: 0;
-    background-image:
-        url('../images/wallpaper.png');
     image-rendering: optimizeSpeed;
-    background-position: center;
     background-size: cover;
-    background-position-y: bottom;
-    height: calc(60vh - 50px);
 }
-#header-bar {
-    width: 100%;
+.header-bar {
     height: 50px;
-    background-color: #001830;
     position: sticky;
-    top: 0;
-    display: inline-block;
+    background-color: #501020;
     display: grid;
     grid-template-columns: 50% 50%;
+    top: 0;
 }
-#content {
-    min-height: 100vh;
-}
-body {
-    margin: 0;
-    min-width: 600px;
-}
-#header-content-img {
-    color: #ffffff;
-    font-size: 30px;
-    width: 100%;
-    height: 100px;
-    font-family: 'Courier New';
-    font-weight: bold;
-    content: '12Kittens';
-    
-    text-align: center;
-}
-#header-content-img-container {
-    width: 300px;
-
-    margin: auto;
-}
-.bar-element-wrapper {
-    display: inline-grid;
-    height: calc(100% - 5px);
-    margin-top: 5px;
-    grid-template-rows: calc(100% - 5px) 5px;
-}
-.bar-element {
-    display: block;
-    margin: 0 10px;
-    height: 100%;
-    align-content: center;
-}
-.bar-list {
+.header-floating-logo {
+    background-image: url(../images/logo.svg);
+    height: 50px;
     width: 200px;
+    background-position: bottom 6px center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*background-color: #000000;*/
+    position: fixed;
+    z-index: 100;
+    top: 30vh;
+    left: 50%;
+    transform: translate(-50%)
 }
-#header-bar-menu-left {
-    direction: rtl;
-    margin-left: auto;
-}
-#header-bar-menu-right {
-    direction: ltr;
-}
-.bar-element-anchor {
-    color: #ffffff;
-    font-family: consolas, monospace;
-    text-decoration: none;
-    font-size: 22px;
-}
-.bar-element-wrapper.selected .bar-element a.bar-element-anchor {
-    color: #ff6060;
-}
-.bar-element-wrapper.selected .bar-element-selector {
-    background-color: #ff6060;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-a.bar-element-anchor:hover {
-    color: #c0c0c0;
-}
-#text-wrapper {
-    width: calc(100% - 30px);
-    margin: auto;
+
+body.no-margin #root {
+    padding: 20px;
+    padding-bottom: 200px;
+    min-height: 100vh;
     max-width: 800px;
-    padding: 30px 15px;
 }
-#text-wrapper hr {
-    border-style: solid;
-    border-color: #a0a0a0;
+
+/*
+MARK: Navigation Bar
+*/
+
+.header-bar-left-nav {
+    display: flex;
+    flex-direction: row-reverse;
 }
-#text-wrapper h1 {
-    font-family: var(--title);
-    font-size: 30pt;
-    border-left: 2px;
-    border-color: #000000;
+.header-bar-right-nav {
+    display: flex;
+    flex-direction: row;
 }
-#text-wrapper h2 {
-    font-family: var(--title);
-    font-size: 22pt;
-    letter-spacing: -1px;
-    border-left: 2px;
-    border-color: #000000;
-}
-#text-wrapper h3, h4, h5, h6 {
-    font-family: var(--title);
-    letter-spacing: -1px;
-    border-left: 2px;
-    border-color: #000000;
-}
-#text-wrapper p {
-    font-family: var(--font);
-    font-weight: normal;
-    color: #202020;
-    font-size: 14pt;
-    line-height: 24pt;
-    text-align: justify;
-}
-#text-wrapper a {
+.header-bar-button {
+    display: grid;
+    margin: 0;
+    grid-template-rows: auto 5px;
     text-decoration: none;
-    color: #305070;
 }
-#text-wrapper a:hover {
-    color: #307070;
+.header-bar-button.selected .header-bar-button-tag {
+    color: #ffa0a0;
+    font-weight: bold;
 }
-#text-wrapper li {
-    font-family: var(--font);
-    font-weight: normal;
-    color: #202020;
+
+.header-bar-button-tag {
+    font-family: 'consolas', 'ubuntu mono', monospace;
+    color: #ffffff;
     font-size: 14pt;
-    text-align: justify;
-    line-height: 24pt;
+    padding: 5px 8px 0;
+    place-self: center;
 }
-#text-wrapper img {
-    width: 100%;
-    border-radius: 8px;
+.header-bar-button-tag:hover::first-letter {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #ffffff;
+    text-decoration-style: solid;
 }
-#text-wrapper img.small {
-    display: inline;
-    border-radius: 0;
-    height: 70px;
-    width: auto;
+.header-bar-button.selected .header-bar-button-tag:hover::first-letter {
+    text-decoration-color: #ffa0a0;
+}
+.header-bar-button-selected-bar {
+    background-color: #ffa0a0;
+    border-radius: 5px 5px 0 0;
+}
+
+.header-mobile-menu-button, .header-mobile-urls {
+    display: none;
+}
+
+/* 
+MARK: Small screen devices 
+*/
+@media (width < 700px) {
+    .header-bar-left-nav, .header-bar-right-nav {
+        display: none;
+    }
+    .header-mobile-menu-button {
+        display: block;
+        width: 50px;
+        height: 50px;
+        border: none;
+        background-color: #00000000;
+        text-align: center;
+        font-size: 40px;
+        font-weight: 600;
+        font-family: 'consolas', 'ubuntu mono', monospace;
+        color: #ffffff;
+    }
+    .header-mobile-urls.open {
+        display: block;
+        position: fixed;
+        background-color: #400010b0;
+        backdrop-filter: blur(5px);
+        top: 60px;
+        left: 10px;
+        border-radius: 5px;
+        padding: 5px;
+        padding-right: 0;
+    }
+    .header-mobile-urls .header-bar-button {
+        display: grid;
+        margin: 0;
+        grid-template-columns: auto 5px;
+        text-decoration: none;
+    }
+    .header-mobile-urls .header-bar-button-selected-bar {
+        border-radius: 5px 0 0 5px;
+    }
 }

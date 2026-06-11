@@ -1,13 +1,18 @@
-#text-wrapper h1 {
-    text-align: center;
-    margin: 40px 0;
-    font-size: 35pt;
+
+#root img:not(.small) {
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    padding: 2px;
 }
 .cc {
     margin: 30px;
     background-color: #e0e0d0;
     border-radius: 18px;
     padding: 8px 30px;
+    font-style: italic;
+
 }
 .cc p {
     text-align: center!important;
@@ -15,4 +20,5 @@
 .cc p img {
     height: 30px;
     width: 30px!important;
+    border-style: none!important;
 }

@@ -2,10 +2,11 @@
     height: 400px;
     display: grid;
     overflow: hidden;
-    grid-template-columns: calc(50% - 400px) 800px calc(50% - 400px);
+    grid-template-columns: calc(50% - 400px) auto calc(50% - 400px);
+    font-size: 0;
 }
 #content-header-image-left, #content-header-image-right {
-    background-image: url('../images/wall2.svg');
+    background-image: url('../images/home/wall-side.svg');
     background-repeat: repeat-x;
     background-size: 800px auto;
 }
@@ -17,8 +18,9 @@
 }
 
 #content-header-image-center {
-    background-image: url('../images/wall.svg');
+    background-image: url('../images/home/wall-inner.svg');
     background-repeat: no-repeat;
+    background-position: top center;
     background-size: 800px auto;
 }
 #projects-grid {

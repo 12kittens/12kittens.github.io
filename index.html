@@ -1,25 +1,89 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Under maintenance</title>
-        <style>
-            h1 {
-                font-family: ubuntu, calibri, sans-serif;
-                text-align: center;
-            }
-            p {
-                font-family: helvetica, calibri, sans-serif;
-                text-align: center;
-            }
-            img {
-                margin: auto;
-                display: block;
-            }
-        </style>
+        <title>
+            12Kittens' homepage
+        </title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8" />
+        
+        <link rel="stylesheet" href="./media/styles/main.css" />
+        <link rel="stylesheet" href="./media/styles/home.css" />
+
     </head>
     <body>
-        <h1>We're on it</h1>
-        <p>After 3 years of... well, nothing, I'm finally renewing the GitHub page. Hope it'll be finished soon.</p>
-        <img src="./media/images/wallpaper3.svg" height="540" width="960" >
+        <div id="compatibility-warning">
+            <h2>Backward compatibility mode warning</h2>
+            <p>
+                If you're reading this, the page is in Backward Compatibility Mode. You're probably using
+                an older browser or device, a script blocker or an extension that might be blocking
+                JavaScript for this page.
+            </p>
+            <p>
+                Some features might require modern JavaScript to work correctly.
+            </p>
+        </div>
+        <div id="compatibility-nav">
+
+        </div>
+        <div id="content-header-image" class="nocompat-only">
+            <div id="content-header-image-left"></div>
+            <div id="content-header-image-center"></div>
+            <div id="content-header-image-right"></div>
+        </div>
+        <div id="root">
+            <h1>Welcome to my new webpage!</h1>
+            <p>
+                <a href="https://12kittens.newgrounds.com">My Newgrounds profile</a>
+            </p>
+            <p>
+                <a href="https://github.com/12kittens">My GitHub profile</a>
+            </p>
+            <h2>Who am I?</h2>
+            <p>
+                I'm a hobby game developer and software programmer,
+                actually 15 years old. My real name is Joaqu&iacute;n (I use my real name for my project's
+                copyright).
+            </p>
+            <p>
+                I like to code apps and libraries under licenses like GPL, because I agree with the 
+                <a href="https://www.gnu.org/home.es.html">GNU Project</a> (there are some things
+                that should be free) and also because I don't want to make money from my hobby
+                (yet). I develop web videogames, too.
+            </p>
+            <p>
+                I know HTML, CSS, JavaScript (both browser and <a href="https://nodejs.org/">Node.js</a>),
+                Python and some C++, PHP and <a href="https://react.dev">React</a> 
+                <a href="https://stackoverflow.com/questions/20435653/what-is-vanillajs">(but I'll always prefer Vanilla)</a>. 
+                I speak Spanish and I'm studying English and some Chinese. (My Chinese is even worse
+                than my English.)
+            </p>
+            <h2>My projects</h2>
+            <p>
+                I actually have one published web videogame, <a href="./games/kittens-dash/">Kittens Dash</a>, and
+                two in development, Fly Kitten Fly! and Kittens Temple. I'm also working on
+                a free studying app whose name I haven't decided yet and a portable
+                password manager (also GPL), called Nano PassBox, which I'm actually deploying.
+            </p>
+            <p>
+                I did also code two libraries: an unofficial Newgrounds.io bridge with modern web technologies
+                (like SubtleCrypto and promises) and a lightweight videogame library, Sprite.js, which includes 
+                features for easily positioning 2D sprites in the canvas. (If you've ever tried to make a videogame
+                using HTML5 canvases without external libraries, you would understand me. When I made that library
+                I didn't know about <a href="https://pixijs.com/">PixiJS</a>). I'm actually working on other
+                things more related to Node.js, like a native multi-platform Node.js TTS engine.
+            </p>
+            <h2>Collaborating</h2>
+            <p>
+                I just code for fun. By now I'm not interested in collaborating with other developers.
+                If you want to help with one of my projects (or you've found a bug and you fixed it by yourself),
+                you can just leave the pull request and I'll try to upload it when possible, thanks.
+                Depending on the license, you might also deploy your version by yourself.
+            </p>
+            <br />
+            <p>Have fun!</p>
+        </div>
+        <script src="./media/scripts/build-page.js"></script>
     </body>
 </html>
