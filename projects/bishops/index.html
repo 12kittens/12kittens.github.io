@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Bishops.js
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" href="/media/styles/main.css" />
+
+    </head>
+    <body>
+        <div id="compatibility-warning">
+            <h2>Backward compatibility mode warning</h2>
+            <p>
+                If you're reading this, the page is in Backward Compatibility Mode. You're probably using
+                an older browser or device, a script blocker or an extension that might be blocking
+                JavaScript for this page.
+            </p>
+            <p>
+                Some features might require modern JavaScript to work correctly.
+            </p>
+        </div>
+        <div id="compatibility-nav">
+
+        </div>
+        <div id="root">
+            <img src="./logo.svg" width="400" style="display: block; margin: 20px auto">
+            <p>A JS chess library for both Node.js and browser applications</p>
+            <chess-ui template="modern-light" src="./test.pgn" playerbar>
+            </chess-ui>
+            <pre>
+&lt;chess-ui template="modern-light" src="./test.pgn" playerbar&gt;
+&lt;/chess-ui&gt;
+            </pre>
+        </div>
+        <script type="module" src="/media/scripts/build-page.js"></script>
+        <script type="module" src="/vendor/bishops/ui.js"></script>
+
+    </body>
+</html>

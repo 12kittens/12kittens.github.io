@@ -18,6 +18,7 @@
     background-image:
     radial-gradient(ellipse at top left, #ff808050, transparent),
     radial-gradient(ellipse at bottom right, #8080ff50, transparent);
+    background-clip: initial;
     border-color: #ff8000;
     border-width: 1px;
     border-style: solid;
@@ -39,7 +40,8 @@
     font-size: 16pt;
     text-align: center;
     padding: 5px;
-    color: #000000c0;
+    color: #000000e0;
+    font-weight: 400;
 }
 .game span:hover {
     text-decoration: underline;

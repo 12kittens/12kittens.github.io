@@ -1,9 +1,8 @@
-'use strict'
-
+import { animateCanvas1 } from './animate-canvas.js'
 // The use of the async keyword should throw an unreachable error
 // for older browsers.
 
-let source = document.currentScript? new URL(document.currentScript.src) : null
+let source = new URL(import.meta.url)
 
 function relative(path) {
     return new URL(path, source).href
@@ -50,6 +49,9 @@ async function setup() {
         const headerImg = document.createElement('div')
         headerImg.classList.add('header-img')
         headerWrapper.appendChild(headerImg)
+
+        animateCanvas1(headerImg)
+
     }
     headerWrapper.classList.add('header-wrapper')
 
@@ -152,6 +154,37 @@ async function setup() {
         item.classList.remove('nocompat-only')
     }
 
+    const letterByLetter = [ ...document.getElementsByClassName('letter-by-letter')]
+
+    window.addEventListener('scroll', () => {
+        letterByLetter.forEach((e) => {
+            if(e.classList.contains('letter-by-letter-progress')) return;
+            const cr = e.getBoundingClientRect()
+            const height = window.innerHeight
+            if(cr.bottom < window.innerHeight && cr.top > 0) {
+                if(e.classList.contains('letter-by-letter-done')) return
+                e.classList.add('letter-by-letter-progress')
+                e.classList.add('letter-by-letter-done')
+                const interval = 0
+                const content = e.textContent
+                let index = 0
+                e.textContent = null
+                function showLetter() {
+                    e.textContent += content[index]
+                    index++
+                    if(index != content.length) {
+                        setTimeout(showLetter, 50)
+                    } else {
+                        e.classList.remove('letter-by-letter-progress'), 300
+                    }
+                }
+                setTimeout(showLetter, 50)
+            } else {
+                e.classList.remove('letter-by-letter-done')
+            }
+
+        })
+    })
 
 }
 

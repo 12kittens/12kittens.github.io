@@ -1,2 +1,6 @@
 12kittens.github.io.code-workspace
+package-lock.json
+node-modules/
 backups
+.gitignore
+.vscode/

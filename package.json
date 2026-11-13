@@ -1,0 +1,24 @@
+{
+  "name": "12kittens.github.io",
+  "version": "1.0.0",
+  "description": "[See the page](https://12kittens.github.io/index.html)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/12kittens/12kittens.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/12kittens/12kittens.github.io/issues"
+  },
+  "homepage": "https://github.com/12kittens/12kittens.github.io#readme",
+  "devDependencies": {
+    "vite-plugin-glsl": "^1.6.2"
+  }
+}

@@ -5,7 +5,7 @@ MARK: Compatibility mode
     box-sizing: border-box;
 }
 h1, h2 {
-    font-family: ubuntu, calibri, sans-serif;
+    font-family: var(--title-font);
     line-height: 35pt;
 }
 h1 {
@@ -15,10 +15,27 @@ h2 {
     font-size: 20pt;
 }
 p, ul {
-    font-family: helvetica, calibri, sans-serif;
-    line-height: 20pt;
+    font-family: var(--body-font);
+    line-height: 22pt;
     font-size: 13pt;
-    color: #303030;
+    font-weight: 600;
+    color: var(--fg1);
+}
+a {
+    text-decoration: line-through;
+    text-decoration-color: #ffffff00;
+    text-decoration-style: solid;
+    text-decoration-thickness: 16pt;
+    text-decoration-skip-ink: none;
+    color: #6080a0;
+    background: linear-gradient(45deg, var(--hh5), var(--hh6));
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    transition: background-size 300ms ease-out;
+}
+a:hover {
+    background-size: 100% 100%;
 }
 #root {
     margin: auto;
@@ -47,9 +64,26 @@ body {
 /*
 MARK: Main styles
 */
+
 :root {
-    --title-font: ubuntu, calibri, sans-serif;
-    --body-font: helvetica, calibri, sans-serif;
+    --title-font: 'Cascadia Code', 'Consolas', 'Ubuntu Mono', monospace, sans-serif;
+    --body-font: 'Segoe UI', sans-serif;
+    --fg: #000000;
+    --fg1: #282420;
+    --bg: #ffffff;
+    --bg1: #efefef;
+    --hh: #803090;
+    --hh1: #ff008020;
+    --hh2: #e0dfde;
+    --hh3: #0090c0;
+    --hh4: #50102880;
+    --hh5: #0080ff40;
+    --hh6: #00b0ff40;
+    --hh7: #c0c0c0e0;
+    --hh8: #ffffffe0;
+    --hh9: #80889070;
+    --hh-grad: linear-gradient(120deg, var(--hh), var(--hh5));
+    --hh-grad1: linear-gradient(120deg, var(--hh), var(--hh6));
 
 }
 .no-margin {
@@ -58,38 +92,57 @@ MARK: Main styles
 .header-wrapper {
     height: 60vh;
 }
-.header-img {
-    background-image: url(../images/wallpaper3-narrow.svg);
+.header-canvas {
+    width: 100%;
     height: 100%;
-    background-position: bottom left;
+    grid-area: 1 / 1;
+}
+.header-pre {
+    z-index: 1;
+    grid-area: 1 / 1;
+    padding: 3px;
+    margin: 0;
+    font-size: 10pt;
+}
+.header-img {
+    height: 100%;
+    background-position: center;
     width: 100%;
     margin: 0;
     image-rendering: optimizeSpeed;
-    background-size: cover;
+    background-repeat: repeat;
+    background-size: 20px;
+    display: grid;
+    overflow: hidden;
 }
 .header-bar {
     height: 50px;
     position: sticky;
-    background-color: #501020;
+    background-size: 20px;
+    background-position: center;
+    background-repeat: repeat;
+    background-image: linear-gradient(var(--hh8), var(--hh7)), url(../images/grid.svg);
+    background-color: var(--hh2);
     display: grid;
     grid-template-columns: 50% 50%;
     top: 0;
 }
 .header-floating-logo {
-    background-image: url(../images/logo.svg);
+    mask-image: url(../images/logo_black.svg);
     height: 50px;
     width: 200px;
-    background-position: bottom 6px center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    /*background-color: #000000;*/
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background-color: #000000;
     position: fixed;
     z-index: 100;
     top: 30vh;
     left: 50%;
-    transform: translate(-50%)
+    transform: translate(-50%);
+    background-position: right;
+    background-image: linear-gradient(60deg, #0060a0, #008080);
 }
-
 body.no-margin #root {
     padding: 20px;
     padding-bottom: 200px;
@@ -110,20 +163,30 @@ MARK: Navigation Bar
     flex-direction: row;
 }
 .header-bar-button {
+    background-size: 0 100%;
     display: grid;
     margin: 0;
     grid-template-rows: auto 5px;
     text-decoration: none;
+    border-radius: 0;
+    background-image: linear-gradient(var(--hh9), var(--hh9));
+}
+
+a.header-bar-button:hover {
+    background-color: #00000000;
 }
 .header-bar-button.selected .header-bar-button-tag {
-    color: #ffa0a0;
+    color: var(--hh3);
     font-weight: bold;
+}
+.letter-by-letter-progress::after {
+    content: '_';
 }
 
 .header-bar-button-tag {
-    font-family: 'consolas', 'ubuntu mono', monospace;
-    color: #ffffff;
-    font-size: 14pt;
+    font-family: var(--title-font);
+    color: #000000;
+    font-size: 13pt;
     padding: 5px 8px 0;
     place-self: center;
 }
@@ -134,10 +197,10 @@ MARK: Navigation Bar
     text-decoration-style: solid;
 }
 .header-bar-button.selected .header-bar-button-tag:hover::first-letter {
-    text-decoration-color: #ffa0a0;
+    text-decoration-color: var(--hh3);
 }
 .header-bar-button-selected-bar {
-    background-color: #ffa0a0;
+    background-color: var(--hh3);
     border-radius: 5px 5px 0 0;
 }
 
@@ -161,13 +224,13 @@ MARK: Small screen devices
         text-align: center;
         font-size: 40px;
         font-weight: 600;
-        font-family: 'consolas', 'ubuntu mono', monospace;
-        color: #ffffff;
+        font-family: var(--title-font);
+        color: var(--fg);
     }
     .header-mobile-urls.open {
         display: block;
         position: fixed;
-        background-color: #400010b0;
+        background-color: var(--hh4);
         backdrop-filter: blur(5px);
         top: 60px;
         left: 10px;
