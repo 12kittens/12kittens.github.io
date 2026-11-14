@@ -9,6 +9,7 @@
         <meta charset="utf-8" />
 
         <link rel="stylesheet" href="/media/styles/main.css" />
+        <link rel="stylesheet" href="/media/styles/code.css" />
 
     </head>
     <body>
@@ -29,15 +30,28 @@
         <div id="root">
             <img src="./logo.svg" width="400" style="display: block; margin: 20px auto">
             <p>A JS chess library for both Node.js and browser applications</p>
-            <chess-ui template="modern-light" src="./test.pgn" playerbar>
-            </chess-ui>
-            <pre>
-&lt;chess-ui template="modern-light" src="./test.pgn" playerbar&gt;
-&lt;/chess-ui&gt;
-            </pre>
+            <div class="code-example">
+                <div class="code-example-tab">
+
+                </div>
+            </div>
+            <div class="code-preview">
+                <chess-ui template="modern-light" src="./test.pgn" playerbar>
+                </chess-ui>
+                <div class="code-snippet">
+                    <pre class="highlight">
+                        <code class="language-html">
+                        &lt;chess-ui template="modern-light" src="./test.pgn" playerbar&gt;
+                        &lt;/chess-ui&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+
         </div>
         <script type="module" src="/media/scripts/build-page.js"></script>
         <script type="module" src="/vendor/bishops/ui.js"></script>
+        <script type="module" src="/media/scripts/highlight.js"></script>
 
     </body>
 </html>

@@ -1,0 +1,29 @@
+.project {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 50px 270px;
+    grid-template-areas: 'a b' 'a c';
+    text-decoration: none;
+    color: var(--fg);
+    margin: 30px 0;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-image:
+        linear-gradient(white, white), linear-gradient(white, white);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: background-image 300ms ease-in-out;
+}
+
+.project-tag {
+    width: fit-content;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'Cascadia Code';
+    font-weight: 500;
+    color: #ffffff;
+}
+.library {
+    background-color: #0080ff;
+}

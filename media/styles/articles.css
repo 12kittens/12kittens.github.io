@@ -49,6 +49,8 @@
 .article-summary {
     grid-area: c;
     margin: 0;
+    font-family: var(--body-font);
+    font-weight: 600;
 }
 
 .article-image {

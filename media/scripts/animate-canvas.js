@@ -15,10 +15,10 @@ export function animateCanvas1(img) {
     document.addEventListener('mousemove', (e) => {
         const amx = Math.floor(e.clientX / window.innerWidth * 5)
         const amy =  Math.floor(e.clientY / window.innerHeight * 3)
-        plus = e.clientX / window.innerWidth * 5 - e.clientY / window.innerHeight * 3
+        plus += Math.hypot(e.movementX, e.movementY) / 1000
         cx = e.clientX
         cy = e.clientY
-        if(amx !== mx || amy !== my) {
+        if((amx !== mx || amy !== my) && shapeTransition > 0.9) {
             before = actual
             actual = dispositions[amx + amy * 5]
             shapeTransition = 0
@@ -40,14 +40,15 @@ export function animateCanvas1(img) {
     varying vec4 v_random;
     const float depth = 1.0;
     float scale = max(600.0, u_resolution.x / 2.0);
-    vec3 torus_knot(float p, float q) {
+    vec3 torus_knot(float p, float q, float divide) {
+        float dt = a_random.w + 0.5;
         vec3 pos = vec3(0.0, 0.0, 0.0);
-        pos.x += sin((a_index + u_time) * p + u_time * 1.0 + u_plus);
-        pos.y += cos((a_index + u_time) * p + u_time * 1.0 + u_plus);
-        pos.x += (0.5 - a_random.x) / 8.0;
-        pos.y += (0.5 - a_random.y) / 8.0;
-        pos.z = sin((a_index + u_time) * q);
-        pos.z += (0.5 - a_random.z) / 8.0;
+        pos.x += sin((a_index + (dt * u_time)) * p + u_time * 1.0 + u_plus);
+        pos.y += cos((a_index + (dt * u_time)) * p + u_time * 1.0 + u_plus);
+        pos.x += (0.5 - a_random.x) / divide;
+        pos.y += (0.5 - a_random.y) / divide;
+        pos.z = sin((a_index + (dt * u_time)) * q);
+        pos.z += (0.5 - a_random.z) / divide;
         return pos;
     }
 
@@ -55,9 +56,9 @@ export function animateCanvas1(img) {
     void main() {
         float transition = 1.0 - (cos(u_transition * pi) + 1.0) / 2.0;
         vec3 pos;
-        pos += torus_knot(u_divide.x, u_divide.y) * transition;
+        pos += torus_knot(u_divide.x, u_divide.y, 1.0 + abs(transition - 0.5) * 14.0) * transition;
         if(transition < 1.0) {
-            pos += torus_knot(u_divide_transition.x, u_divide_transition.y) * (1.0 - transition);
+            pos += torus_knot(u_divide_transition.x, u_divide_transition.y, 1.0 + abs(transition - 0.5) * 14.0) * (1.0 - transition);
         }
         gl_PointSize = (0.8 - pos.z * 0.5) * scale / 600.0;
         v_grey = 1.0 - pos.z * 0.25;
@@ -187,7 +188,7 @@ export function animateCanvas1(img) {
             gl.uniform1f(uniformLocations[4], shapeTransition)
             gl.uniform1f(uniformLocations[5], plus)
             if(shapeTransition < 1) {
-                shapeTransition += 0.1;
+                shapeTransition += 0.05;
             } else {
                 shapeTransition = 1;
             }

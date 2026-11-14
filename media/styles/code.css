@@ -1,0 +1,14 @@
+.highlight {
+    font-size: 15px;
+    font-family: consolas;
+    letter-spacing: -0.5px;
+}
+.highlight .hljs-name {
+    color: #0050a0;
+}
+.highlight .hljs-attr {
+    color: #008070;
+}
+.highlight .hljs-string {
+    color: #6000c0;
+}
