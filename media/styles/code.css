@@ -2,6 +2,15 @@
     font-size: 15px;
     font-family: consolas;
     letter-spacing: -0.5px;
+    margin: 0;
+}
+.code-snippet {
+    background-color: var(--bg1);
+    padding: 10px 15px;
+    border-color: var(--hh7);
+    border-style: solid;
+    border-width: 1px;
+    margin: 20px 5px;
 }
 .highlight .hljs-name {
     color: #0050a0;
@@ -11,4 +20,59 @@
 }
 .highlight .hljs-string {
     color: #6000c0;
+}
+.highlight .hljs-keyword {
+    color: #9000b0;
+}
+.highlight .hljs-title {
+    color: #0050a0;
+}
+.highlight .hljs-params {
+    color: #c00000;
+}
+.code-example {
+    margin: 20px 0;
+}
+.code-example-tab {
+    display: grid;
+    grid-template-columns: 60% calc(40% - 1px);
+    background-color: var(--hh7);
+    grid-gap: 1px;
+    padding: 1px;
+    & .code-snippet {
+        border: none;
+        margin: 0;
+    }
+}
+
+.code-example-tab.vertical {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+}
+.code-preview {
+    padding: 10px 10px;
+    background-color: var(--bg1);
+}
+.code-language-tag {
+    font-family: var(--body-font);
+    font-size: 10pt;
+    margin-bottom: 8px;
+    color: var(--fg1);
+}
+.code-snippet pre {
+    line-height: 25px;
+}
+.code-console-output pre {
+    line-height: 21px;
+    padding: 0;
+    margin: 0;
+}
+.code-console-output {
+    background-color: #101010;
+    color: #ffffff;
+    padding: 15px;
+    margin: 20px 5px;
+    border-color: var(--hh7);
+    border-width: 1px;
+    border-style: solid;
 }

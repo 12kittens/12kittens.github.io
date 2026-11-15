@@ -1,9 +1,16 @@
 import hljs from 'highlight.js'
 
-[...document.getElementsByTagName('code')].forEach((e) => {
+[...document.getElementsByClassName('remove-indent')].forEach((e) => {
+
     const text = e.textContent
     const lines = text.split('\n')
     let indentAmount = Infinity
+    while(lines[0].search(/\S/) == -1) {
+        lines.shift()
+    }
+    while(lines[lines.length - 1].search(/\S/) == -1) {
+        lines.pop()
+    }
     for(const line of lines) {
         const indent = line.match(/^\s*\S/)
         console.log(indent?.[0])
@@ -12,11 +19,13 @@ import hljs from 'highlight.js'
             indentAmount = Math.min(thisIndentAmount, indentAmount)
         }
     }
-    for(let n in lines) {
+    for(const n in lines) {
+        console.log(n)
         lines[n] = lines[n].substring(indentAmount)
     }
     console.log(indentAmount)
     console.log(lines)
+    e.textContent = ''
     e.textContent = lines.join('\n')
 
 })

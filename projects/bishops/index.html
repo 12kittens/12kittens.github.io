@@ -31,27 +31,92 @@
             <img src="./logo.svg" width="400" style="display: block; margin: 20px auto">
             <p>A JS chess library for both Node.js and browser applications</p>
             <div class="code-example">
-                <div class="code-example-tab">
+                <div class="code-example-tab vertical">
+                    <div class="code-preview">
+                        <chess-ui template="modern-light" src="./test.pgn" playerbar>
+                        </chess-ui>
+                    </div>
+                    <div class="code-snippet">
+                        <div class="code-language-tag">HTML</div>
+                        <pre class="highlight"><code class="language-html remove-indent">
+                                
+                            &lt;chess-ui template="modern-light" src="./test.pgn" playerbar&gt;
+                            &lt;/chess-ui&gt;
 
+                        </code></pre>
+                    </div>
                 </div>
             </div>
-            <div class="code-preview">
-                <chess-ui template="modern-light" src="./test.pgn" playerbar>
-                </chess-ui>
+            <p>
+                Bishops.js is a modern JavaScript chess library including logics, PGN
+                parsing and a simple HTML-based user interface, intended for web applications
+                and Node.js projects, inspired by niklasf's
+                <a href="https://github.com/niklasf/python-chess" target="_blank">
+                    python-chess
+                </a> 
+                library.
+            </p>
+            <p>
+                This project is still under development.
+            </p>
+            <h2>Features</h2>
+            <ul>
+                <li>Includes JSDoc annotations</li>
+                <li>Agnostic Web Component-based UI</li>
+                <li>Make moves from UCI and SAN strings</li>
                 <div class="code-snippet">
-                    <pre class="highlight">
-                        <code class="language-html">
-                        &lt;chess-ui template="modern-light" src="./test.pgn" playerbar&gt;
-                        &lt;/chess-ui&gt;
-                        </code>
+                    <div class="code-language-tag">JavaScript</div>
+                    <pre class="highlight"><code class="language-javascript remove-indent">
+
+                        import { Game } from 'bishops/core'
+
+                        const game = new Game()
+
+                        game.move('e4')
+                        game.move('e5')
+                        game.move('Nf3')
+
+                        game.undo()
+
+                    </code></pre>
+                </div>
+                <li>ASCII board rendering</li>
+                <div class="code-snippet">
+                    <div class="code-language-tag">JavaScript</div>
+                    <pre class="highlight"><code class="language-javascript remove-indent">
+
+                        game.position.print()
+
+                    </code></pre>
+                </div>
+                <div class="code-console-output">
+                    <pre class="remove-indent">
+
+                        · · · · k · · ·
+                        · · · · · · · ·
+                        · · N · P · · ·
+                        · · · K · · · p
+                        · · · · · · · P
+                        · · · · · · P ·
+                        · · · · · · · ·
+                        · · · · · · · ·
+
                     </pre>
                 </div>
-            </div>
+                <li>Checkmate, stalemate, dead position detection</li>
+                <div class="code-snippet">
+                    <div class="code-language-tag">JavaScript</div>
+                    <pre class="highlight"><code class="language-javascript remove-indent">
 
+                        game.position.print()
+
+                    </code></pre>
+                </div>
+
+            </ul>
         </div>
         <script type="module" src="/media/scripts/build-page.js"></script>
         <script type="module" src="/vendor/bishops/ui.js"></script>
         <script type="module" src="/media/scripts/highlight.js"></script>
-
     </body>
 </html>

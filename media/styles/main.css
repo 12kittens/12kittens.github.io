@@ -18,7 +18,6 @@ p, ul {
     font-family: var(--body-font);
     line-height: 22pt;
     font-size: 13pt;
-    font-weight: 600;
     color: var(--fg1);
 }
 a {

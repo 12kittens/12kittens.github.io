@@ -898,6 +898,7 @@ var ChessUI = class extends HTMLElement {
 		}
 		this.lastRendered = n;
 		this.renderTimeMetadata();
+		this.game.position.print()
 	}
 	/**
 	* 
