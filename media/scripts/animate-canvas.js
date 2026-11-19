@@ -7,10 +7,16 @@ export function animateCanvas1(img) {
     let cx = 0, cy = 0;
     let plus = 0;
     let canvas, preElement;
+    /*
     const dispositions = [
-        [1, 0], [2, 3], [2, 5], [2, 7], [3, 4],
+        [1, 0], [6, 7], [2, 5], [2, 7], [3, 4],
         [3, 5], [2, 5], [4, 5], [2, 11], [2, 3],
-        [5, 8], [8, 9], [3, 7], [3, 5], [2, 3]
+        [5, 8], [8, 9], [3, 7], [3, 5], [4, 7]
+    ]*/
+    const dispositions = [
+        [1, 0], [2, 3], [2, 5], [2, 7], [2, 9],
+        [3, 4], [3, 5], [3, 7], [3, 8], [3, 10],
+        [4, 5], [4, 7], [5, 7], [5, 8], [5, 9]
     ]
     document.addEventListener('mousemove', (e) => {
         const amx = Math.floor(e.clientX / window.innerWidth * 5)
